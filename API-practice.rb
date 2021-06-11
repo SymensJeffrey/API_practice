@@ -1,5 +1,5 @@
 while true
-  system "clear"
+  # system "clear"
   p "Welcome to the weather app. Please enter the city: (enter 'q' to quit)"
  
   city_answer = gets.chomp
@@ -7,7 +7,7 @@ while true
   if city_answer == 'q'
     break
   end
-  
+
   p "What units would you like"
   units_answer = gets.chomp
 
