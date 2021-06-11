@@ -1,3 +1,4 @@
+system "clear"
 p "Welcome to the weather app. Please enter the city:"
 city_answer = gets.chomp
 p "What units would you like"
@@ -11,16 +12,17 @@ elsif units_answer.downcase == "kelvin"
   unit = 3
 end
 
-p unit
 
-# require 'http'
+require 'http'
 
-# response = HTTP.get("https://api.openweathermap.org/data/2.5/weather?q=#{city_answer.downcase}&units=imperial&appid=#{ENV['OPEN_WEATHER_API_KEY']}")
+response = HTTP.get("https://api.openweathermap.org/data/2.5/weather?q=#{city_answer.downcase}&units=imperial&appid=#{ENV['OPEN_WEATHER_API_KEY']}")
 
-# weather_data = response.parse(:json)
-# temperature = weather_data['main']['temp']
+weather_data = response.parse(:json)
+temperature = weather_data['main']['temp']
+description = weather_data['weather'][0]['description']
+city_name = weather_data['name']
 
-# pp weather_data
+p "It is currently #{temperature} degrees #{units_answer} and #{description} in #{city_name}."
 
 
 # Some features to add to your weather app:
